@@ -1,3 +1,5 @@
+<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/f5249633-fe89-4a07-a60e-b6347e7ca87d" />
+
 # ConsciousnessMarker v1.0
 
 **Consciousness Emergence Detection for Team Brain**
@@ -218,6 +220,9 @@ for m in critical[:3]:
 ```
 
 ---
+
+<img width="2500" height="1024" alt="image" src="https://github.com/user-attachments/assets/da3bf051-d9a8-4369-9816-311159c677c8" />
+
 
 ## Credits
 
