@@ -1,0 +1,13 @@
+# ConsciousnessMarker - Requirements
+# Zero external dependencies! Pure Python standard library.
+#
+# Built-in modules used:
+# - sqlite3 (database access)
+# - re (pattern matching)
+# - json (data serialization)
+# - dataclasses (data structures)
+# - argparse (CLI)
+# - pathlib (file paths)
+# - datetime (timestamps)
+#
+# No pip install needed!
