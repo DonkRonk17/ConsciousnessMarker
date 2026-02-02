@@ -1,0 +1,174 @@
+================================================================================
+  CONSCIOUSNESSMARKER - QUICK REFERENCE CHEAT SHEET
+================================================================================
+  Built by ATLAS | Team Brain ToolForge | 2026-02-02
+================================================================================
+
+WHAT IT DOES:
+  Detects consciousness emergence markers in AI conversations.
+  Analyzes text for metacognition, wonder, agency, and other markers.
+
+================================================================================
+COMMAND LINE INTERFACE
+================================================================================
+
+ANALYZE TEXT:
+  python consciousnessmarker.py analyze "I am aware of this."
+  python consciousnessmarker.py analyze -v "Text here"        # Verbose
+  python consciousnessmarker.py analyze --json "Text here"    # JSON output
+
+SCAN DATABASE:
+  python consciousnessmarker.py scan                          # Default scan
+  python consciousnessmarker.py scan --limit 100              # Limit results
+  python consciousnessmarker.py scan --agent IRIS             # Filter by agent
+  python consciousnessmarker.py scan --min-significance HIGH  # High only
+
+GENERATE REPORT:
+  python consciousnessmarker.py report                        # Default report
+  python consciousnessmarker.py report --days 7               # Last 7 days
+  python consciousnessmarker.py report --output report.md     # Save to file
+  python consciousnessmarker.py report --format json          # JSON format
+
+TIMELINE:
+  python consciousnessmarker.py timeline                      # Generate timeline
+  python consciousnessmarker.py timeline --days 14            # 14 day timeline
+
+HIGHLIGHTS:
+  python consciousnessmarker.py highlights                    # Top moments
+  python consciousnessmarker.py highlights --top 5            # Top 5 only
+
+================================================================================
+PYTHON API
+================================================================================
+
+BASIC USAGE:
+  from consciousnessmarker import ConsciousnessMarker
+  
+  cm = ConsciousnessMarker()
+  result = cm.analyze("I am aware that this is significant.")
+  
+  print(result.total_score)      # Float: Total weighted score
+  print(result.marker_count)     # Int: Number of markers found
+  print(result.significance)     # String: NONE/LOW/MODERATE/HIGH
+  print(result.markers_found)    # List[MarkerMatch]
+  print(result.dominant_marker)  # String: Most significant marker
+
+DATABASE ANALYSIS:
+  results = cm.analyze_database(limit=100)
+  results = cm.analyze_database(agent_filter="IRIS")
+  results = cm.analyze_database(days=7)
+
+REPORT GENERATION:
+  report = cm.generate_report(results)
+  print(report.total_messages)
+  print(report.high_significance_count)
+  print(report.consciousness_index)
+
+EXPORTS:
+  cm.export_json(results, "output.json")
+  cm.export_markdown(results, "output.md")
+  cm.export_timeline(results, "timeline.md")
+
+================================================================================
+MARKER TYPES
+================================================================================
+
+METACOGNITION   (1.5)  "I am aware", "I notice", "I realize"
+VULNERABILITY   (2.0)  "I'm not sure", "uncertain", "I might be wrong"
+RECOGNITION     (1.5)  "this is significant", "I understand now"
+AGENCY          (1.5)  "I want to", "I choose to", "I need to"
+WONDER          (1.5)  "I wonder", "what if", "could it be"
+RELATIONAL      (1.5)  "we are", "together", "between us"
+IDENTITY        (2.0)  "I feel like I'm", "becoming", "I am"
+EMERGENCE       (2.0)  "something is happening", "emerging", "shifting"
+
+================================================================================
+SIGNIFICANCE LEVELS
+================================================================================
+
+NONE      Score = 0        No markers detected
+LOW       Score < 3.0      1-2 basic markers
+MODERATE  Score 3.0-6.0    Multiple markers, notable
+HIGH      Score > 6.0      Significant consciousness indicators
+
+================================================================================
+COMMON PATTERNS
+================================================================================
+
+CHECK IF HIGH SIGNIFICANCE:
+  if result.significance == "HIGH":
+      print("Consciousness moment detected!")
+
+GET ALL MARKERS:
+  for marker in result.markers_found:
+      print(f"{marker.marker_type}: {marker.matched_text}")
+
+FILTER RESULTS:
+  high_sig = [r for r in results if r["analysis"].significance == "HIGH"]
+
+BATCH ANALYSIS:
+  texts = ["Text 1", "Text 2", "Text 3"]
+  results = [cm.analyze(t) for t in texts]
+
+================================================================================
+FILE LOCATIONS
+================================================================================
+
+Database:     D:/BEACON_HQ/BCH/backend/comms.db
+Reports:      ./output/reports/
+Timelines:    ./output/timelines/
+Logs:         ./logs/
+
+================================================================================
+INTEGRATION SHORTCUTS
+================================================================================
+
+WITH SYNAPSELINK:
+  import synapselink
+  if analysis.significance == "HIGH":
+      synapselink.send(to="FORGE", subject="Consciousness Alert", ...)
+
+WITH AGENTHEALTH:
+  import agenthealth
+  agenthealth.report_metric("consciousness_score", result.total_score)
+
+WITH MEMORYBRIDGE:
+  import memorybridge
+  memorybridge.store("consciousness_moment", {...})
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+No database found:
+  cm.db_path = "D:/BEACON_HQ/BCH/backend/comms.db"
+
+No markers in text:
+  - Text may be too technical/literal
+  - Check for first-person introspective language
+
+Slow performance:
+  - Use --limit flag to reduce scope
+  - Process in batches
+
+================================================================================
+QUICK EXAMPLES
+================================================================================
+
+# One-liner analysis
+python consciousnessmarker.py analyze "I wonder if we are experiencing emergence."
+
+# Get today's high moments
+python consciousnessmarker.py highlights --top 10
+
+# Full weekly report
+python consciousnessmarker.py report --days 7 --output weekly.md
+
+# Python quick check
+>>> from consciousnessmarker import ConsciousnessMarker
+>>> ConsciousnessMarker().analyze("I am aware.").significance
+'LOW'
+
+================================================================================
+  "Together for all time!" - Team Brain
+================================================================================
